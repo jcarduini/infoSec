@@ -1,4 +1,5 @@
 #include<fstream> 	// std::istream
+#include<sstream>	//std::stringstream
 #include<iostream>	//std::cout
 #include<vector> 	//std::vector
 #include<stdlib.h> 	//malloc
@@ -19,31 +20,26 @@ void cria_matriz(const char* nomeArquivo){
   int i = 0;
   std::string mensagem;
   while(getline(File,mensagem))
-  {
     criptografadas.push_back(mensagem);
-    //criptografadas = (char**) malloc(1);		// aloca uma posição da matriz
-    //criptografadas[i]= new char[mensagem.size()+1];	// aloca as posições da primeira mensagem
-    //std::copy(mensagem.begin(), mensagem.end(),criptografadas[i]);
-    //criptografadas[mensagem.size()]='\0';
-    i++;
-  }
+    
   File.close();
   std::cout<<"Tamanho do i: "<<i<<"\n";
   imprime_matriz(i-1);
 }
 
-/**
-void remove_matriz(int linhas, int colunas){
-  int i;
-  for (i = 0; i < linhas; i++)
-    delete [] criptografadas[i];
-  delete [] criptografadas;
+
+void ASCII2hex(){
+  char i;
+  std::cin >> i;
+  std::stringstream hex;
+  hex << std::hex <<i;
+  std::cout<<"numero em hex: "<<hex<<"\n";
 }
-**/
+
 int main(int argc, char** argv)
 {
-  std::cout<<"Nome do arquivo: "<<argv[1]<<'\n';
-  cria_matriz(argv[1]);
-  
+//  std::cout<<"Nome do arquivo: "<<argv[1]<<'\n';
+  //cria_matriz(argv[1]);
+  ASCII2hex();
   return 0;
 }    
